@@ -14,3 +14,7 @@ Route::post('/miejscowosci','LocationsController@store');
 Route::patch('/miejscowosci/{location}','LocationsController@update');
 Route::delete('/miejscowosci/{location}','LocationsController@destroy');
 
+Route::post('/wojewodztwa','VoivodeshipsController@store');
+Route::patch('/wojewodztwa/{viovodeship}','VoivodeshipsController@update');
+Route::delete('/wojewodztwa/{viovodeship}','VoivodeshipsController@destroy');
+
