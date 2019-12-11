@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/miejscowosci','LocationsController@store');
+Route::patch('/miejscowosci/{location}','LocationsController@update');
+Route::delete('/miejscowosci/{location}','LocationsController@destroy');
 
-Route::get('/', function () {
-    return view('welcome');
-});
