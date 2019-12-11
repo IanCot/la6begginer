@@ -12,58 +12,55 @@ class LocationManagmentTest extends TestCase
    /** @test */
    public function a_location_can_be_added(){
         $this->withoutExceptionHandling();
-        $response = $this->post('/miejscowosci',[
-            'name'=>'Świdnica',
-            'voivodeship'=>'Dolnośląskie'
-        ]);
-        $response->assertOk();
+        $response = $this->post('/miejscowosci',$this->data());
         $this->assertCount(1,Location::all());
+        $location = Location::first();
+        $response->assertRedirect( $location->path());
    }
    /** @test */
    public function a_name_is_require(){
       
-        $response = $this->post('/miejscowosci',[
-            'name'=>'',
-            'voivodeship'=>'Dolnośląskie'
-        ]);
+        $response = $this->post('/miejscowosci',array_merge($this->data(),['name'=>'']));
         $response->assertSessionHasErrors('name');
    }
    /** @test */
    public function a_voivodeship_is_require(){
-       $response = $this->post('/miejscowosci',[
-           'name'=>'Świdnica',
-           'voivodeship'=>''
-       ]);
+       $response = $this->post('/miejscowosci',array_merge($this->data(),['voivodeship'=>'']));
        $response->assertSessionHasErrors('voivodeship');
    }
    /** @test */
    public function a_location_can_be_updated(){
         $this->withoutExceptionHandling();
-        $this->post('/miejscowosci',[
-            'name'=>'Świdnica',
-            'voivodeship'=>'Dolnośląskie'
-        ]);
+        $this->post('/miejscowosci',$this->data());
         $this->assertCount(1,Location::all());
         $location = Location::first();
-        $this->patch('/miejscowosci/'.$location->id,[
+        $response =$this->patch('/miejscowosci/'.$location->id,[
             'name'=>'Świdnica Śląska',
             'voivodeship'=>'Śląśkie'
         ]);
         $this->assertEquals('Świdnica Śląska' ,Location::first()->name);
         $this->assertEquals('Śląśkie' ,Location::first()->voivodeship);
+        $response->assertRedirect( $location->path());
    }
 
    /** @test */
    public function a_location_can_be_deleted(){
     $this->withoutExceptionHandling();
-    $this->post('/miejscowosci',[
-        'name'=>'Świdnica',
-        'voivodeship'=>'Dolnośląskie'
-    ]);
+    $this->post('/miejscowosci',$this->data());
     $this->assertCount(1,Location::all());
     $location = Location::first();
-    $this->delete('/miejscowosci/'.$location->id);
+    $response = $this->delete('/miejscowosci/'.$location->id);
     $this->assertCount(0,Location::all());
     $this->assertCount(1,Location::onlyTrashed()->get());
+    $response->assertRedirect('/miejscowosci');
+   }
+/**
+ * @return array
+ */
+   private function data(){
+       return [
+        'name'=>'Świdnica',
+        'voivodeship'=>'Dolnośląskie'
+       ];
    }
 }

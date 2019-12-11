@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 class LocationsController extends Controller
 {
     public function store(){
-        Location::create($this->validateRequest());
+       $location =  Location::create($this->validateRequest());
+       return \redirect('/miejscowosci/'.$location->id);
     }
     public function update(Location $location){
         $location->update($this->validateRequest());
+        return \redirect('/miejscowosci/'.$location->id);
     }
     public function destroy(Location $location){
         $location->delete();
+        return \redirect('/miejscowosci');
     }
     /**
      * @return mixin

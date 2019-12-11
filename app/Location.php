@@ -8,4 +8,8 @@ class Location extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
+
+    public function path(){
+        return '/miejscowosci/'.$this->id;
+    }
 }
