@@ -10,10 +10,19 @@ class CityController extends Controller
         $city = City::create($this->validateRequest());
         return \redirect('/miejscowosci/'.$city->id);
     }
+    public function update(City $city){
+        $city->update($this->validateRequest());
+        return \redirect('/miejscowosci/'.$city->id);
+    }
+    public function destroy(City $city){
+        $city->delete();
+        return \redirect('/miejscowosci');
+    }
     protected function validateRequest(){
         return  \request()->validate([
             'name'=>'required',
-            'voivodeship_id'=>'required'
+            'voivodeship_id'=>'required',
+            'postcode'=>'required'
             ]);
     }
 }
