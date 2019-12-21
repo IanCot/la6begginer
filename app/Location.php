@@ -10,6 +10,6 @@ class Location extends Model
     protected $guarded = [];
 
     public function path(){
-        return '/miejscowosci/'.$this->id;
+        return '/lokalizacje/'.$this->id;
     }
 }
