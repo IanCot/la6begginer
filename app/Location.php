@@ -9,6 +9,11 @@ class Location extends Model
     use SoftDeletes;
     protected $guarded = [];
 
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
+
     public function path(){
         return '/lokalizacje/'.$this->id;
     }

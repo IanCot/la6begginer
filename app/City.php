@@ -9,6 +9,14 @@ class City extends Model
     use SoftDeletes;
     protected $guarded = [];
 
+    public function voivodeship()
+    {
+        return $this->belongsTo('App\Voivodeship');
+    }
+    public function locations()
+    {
+        return $this->hasMany('App\Locations');
+    }
     public function path(){
         return '/miejscowosci/'.$this->id;
     }
