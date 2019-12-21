@@ -10,6 +10,6 @@ $factory->define(City::class, function (Faker $faker) {
     return [
         'name'=>$faker->city,
         'postcode'=>$faker->postcode,
-        'voivodeship'=>factory(Voivodeship::class)
+        'voivodeship_id'=>factory(Voivodeship::class)
     ];
 });

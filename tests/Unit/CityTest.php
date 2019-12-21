@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 use \App\City;
+use \App\Voivodeship;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,4 +21,12 @@ class CityTest extends TestCase
         ]);
         $this->assertCount(1,City::all());
     }
+    /**
+     * @test
+     */
+    public function a_city_has_voivodeship(){
+        $city = \factory(City::class)->create();
+        $this->assertInstanceOf(Voivodeship::class,$city->voivodeship);
+    }
+
 }
