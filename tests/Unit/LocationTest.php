@@ -27,5 +27,5 @@ class LocationTest extends TestCase
     public function a_location_has_city(){
         $location = \factory(Location::class)->create();
         $this->assertInstanceOf(City::class,$location->city);
-    }
+    }  
 }

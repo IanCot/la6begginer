@@ -13,7 +13,6 @@ class Location extends Model
     {
         return $this->belongsTo('App\City');
     }
-
     public function path(){
         return '/lokalizacje/'.$this->id;
     }
