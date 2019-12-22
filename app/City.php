@@ -15,7 +15,7 @@ class City extends Model
     }
     public function locations()
     {
-        return $this->hasMany('App\Locations');
+        return $this->hasMany('App\Location');
     }
     public function path(){
         return '/miejscowosci/'.$this->id;

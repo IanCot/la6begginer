@@ -13,7 +13,10 @@ class Voivodeship extends Model
     {
         return $this->hasMany('App\City');
     }
-    
+    public function locations()
+    {
+        return $this->hasManyThrough('App\Location', 'App\City');
+    }
     public function path(){
         return '/wojewodztwa/'.$this->id;
     }
