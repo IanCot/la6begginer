@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/biegi','RunController@store');
+Route::patch('/biegi/{run}','RunController@update');
+Route::delete('/biegi/{run}','RunController@destroy');
+
 Route::post('/lokalizacje','LocationsController@store');
 Route::patch('/lokalizacje/{location}','LocationsController@update');
 Route::delete('/lokalizacje/{location}','LocationsController@destroy');

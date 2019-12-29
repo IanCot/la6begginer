@@ -9,11 +9,11 @@ class LocationsController extends Controller
 {
     public function store(){
        $location =  Location::create($this->validateRequest());
-       return \redirect('/lokalizacje/'.$location->id);
+       return \redirect($location->path());
     }
     public function update(Location $location){
         $location->update($this->validateRequest());
-        return \redirect('/lokalizacje/'.$location->id);
+        return \redirect($location->path());
     }
     public function destroy(Location $location){
         $location->delete();
