@@ -8,7 +8,9 @@ class Location extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
-
+    public function runs(){
+        return $this->hasMany('App\Run');
+    }
     public function city()
     {
         return $this->belongsTo('App\City');

@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::post('/organizatorzy','OrganizerController@store');
+Route::patch('/organizatorzy/{organizer}','OrganizerController@update');
+Route::delete('/organizatorzy/{organizer}','OrganizerController@destroy');
+
 Route::post('/biegi','RunController@store');
 Route::patch('/biegi/{run}','RunController@update');
 Route::delete('/biegi/{run}','RunController@destroy');
