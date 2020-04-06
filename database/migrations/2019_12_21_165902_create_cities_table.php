@@ -17,6 +17,7 @@ class CreateCitiesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('postcode');
+            $table->string('county');
             $table->unsignedBigInteger('voivodeship_id');
             $table->softDeletes();
             $table->timestamps();

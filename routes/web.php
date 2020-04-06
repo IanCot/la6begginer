@@ -31,3 +31,7 @@ Route::post('/wojewodztwa','VoivodeshipsController@store');
 Route::patch('/wojewodztwa/{viovodeship}','VoivodeshipsController@update');
 Route::delete('/wojewodztwa/{viovodeship}','VoivodeshipsController@destroy');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
