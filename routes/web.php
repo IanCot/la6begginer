@@ -35,3 +35,4 @@ Route::delete('/wojewodztwa/{viovodeship}','VoivodeshipsController@destroy');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
