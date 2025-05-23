@@ -6,7 +6,7 @@ use App\Location;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class LocationManagmentTest extends TestCase
+class LocationManagementTest extends TestCase
 {
     use RefreshDatabase;
    /** @test */

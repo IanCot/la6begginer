@@ -18,7 +18,8 @@ class CityTest extends TestCase
         City::create([
             'name'=>'Smolec',
             'postcode'=>'58-654',
-            'voivodeship_id'=>1
+            'voivodeship_id'=>1,
+            'county' => 'Wrocławski' // Added county
         ]);
         $this->assertCount(1,City::all());
     }
@@ -26,16 +27,16 @@ class CityTest extends TestCase
      * @test
      */
     public function a_city_has_voivodeship(){
-        $city = \factory(City::class)->create();
+        $city = City::factory()->create();
         $this->assertInstanceOf(Voivodeship::class,$city->voivodeship);
     }
     /**
      * @test
      */
     public function a_city_has_locations(){
-        $city = \factory(City::class)->create();
+        $city = City::factory()->create();
         for($i=0;$i<3;$i++){
-            $city->locations()->save(\factory(Location::class)->create());
+            $city->locations()->save(Location::factory()->create());
         }
         $this->assertCount(3,$city->locations);
         $this->assertInstanceOf(Location::class,$city->locations[0]);
